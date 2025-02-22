@@ -56,6 +56,13 @@ h1 {
     background-color: #ffdb4d;
 }
 
+.say-hi {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 </style></head>
 <body>
     <div class="container">
@@ -63,9 +70,10 @@ h1 {
         <div id="countdown"></div>
         <div class="music-controls">
             <button class="btn" onclick="toggleMusic()">Play/Pause Music</button>
-            <a href="https://wa.me/6285975115627?text=wish%20you%20all%20the%20best%20karin" class="btn">Say Hi to aurorabrlz</a>
         </div>
-    </div><audio id="bg-music" autoplay loop>
+    </div><a href="https://wa.me/6285975115627?text=wish%20you%20all%20the%20best%20karin" class="btn say-hi">Say Hi to aurorabrlz</a>
+
+<audio id="bg-music" autoplay loop>
     <source src="https://files.catbox.moe/jvz9un.m4a" type="audio/mp4">
     Browser Anda tidak mendukung audio tag.
 </audio>
