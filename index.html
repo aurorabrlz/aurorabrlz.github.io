@@ -1,113 +1,110 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karin Birthday Countdown</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        background: url('https://raw.githubusercontent.com/aurorabrlz/aurorabrlz.github.io/refs/heads/main/98ed595b05105ea66f3742bd5fbe8c02.jpg') no-repeat center center/cover;
+        overflow: hidden;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            color: white;
-            background: url('https://raw.githubusercontent.com/aurorabrlz/aurorabrlz.github.io/refs/heads/main/Screenshot_2025_0222_224240.png') no-repeat center center/cover;
-            overflow: hidden;
-        }
+    .container {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        position: relative;
+        z-index: 10;
+    }
 
-        .container {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
-            position: relative;
-            z-index: 10;
-        }
+    h1 {
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
 
-        h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+    #countdown {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-top: 10px;
+    }
 
-        #countdown {
-            font-size: 1.8em;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+    /* Efek Kembang Api */
+    .firework {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: yellow;
+        border-radius: 50%;
+        animation: explode 1s ease-out infinite;
+    }
 
-        /* Efek Kembang Api */
-        .firework {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: yellow;
-            border-radius: 50%;
-            animation: explode 1s ease-out infinite;
+    @keyframes explode {
+        0% {
+            transform: scale(1);
+            opacity: 1;
         }
+        100% {
+            transform: scale(10);
+            opacity: 0;
+        }
+    }
+</style>
 
-        @keyframes explode {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(10);
-                opacity: 0;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <h1>Karin Birthday 24 ✨🎉</h1>
         <div id="countdown"></div>
-    </div>
+    </div><script>
+    function updateCountdown() {
+        const countdownElement = document.getElementById("countdown");
+        const targetDate = new Date("2025-02-25T00:00:00+07:00").getTime();
+        const now = new Date().getTime();
+        const timeRemaining = targetDate - now;
 
-    <script>
-        function updateCountdown() {
-            const countdownElement = document.getElementById("countdown");
-            const targetDate = new Date("2025-02-25T00:00:00+07:00").getTime();
-            const now = new Date().getTime();
-            const timeRemaining = targetDate - now;
-
-            if (timeRemaining <= 0) {
-                countdownElement.innerHTML = "🎉 Selamat Ulang Tahun, Karin! 🎂🎆";
-                triggerFireworks();
-                return;
-            }
-
-            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
-            const seconds = Math.floor((timeRemaining / 1000) % 60);
-
-            countdownElement.innerHTML = `${days} Hari : ${hours} Jam : ${minutes} Menit : ${seconds} Detik`;
-
-            setTimeout(updateCountdown, 1000);
+        if (timeRemaining <= 0) {
+            countdownElement.innerHTML = "🎉 Selamat Ulang Tahun, Karin! 🎂🎆";
+            triggerFireworks();
+            return;
         }
 
-        function triggerFireworks() {
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const firework = document.createElement("div");
-                    firework.className = "firework";
-                    firework.style.left = Math.random() * window.innerWidth + "px";
-                    firework.style.top = Math.random() * window.innerHeight + "px";
-                    document.body.appendChild(firework);
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
+        const seconds = Math.floor((timeRemaining / 1000) % 60);
 
-                    setTimeout(() => firework.remove(), 1000);
-                }, i * 200);
-            }
+        countdownElement.innerHTML = `${days} Hari : ${hours} Jam : ${minutes} Menit : ${seconds} Detik`;
+
+        setTimeout(updateCountdown, 1000);
+    }
+
+    function triggerFireworks() {
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+                const firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.left = Math.random() * window.innerWidth + "px";
+                firework.style.top = Math.random() * window.innerHeight + "px";
+                document.body.appendChild(firework);
+
+                setTimeout(() => firework.remove(), 1000);
+            }, i * 200);
         }
+    }
 
-        updateCountdown();
-    </script>
+    updateCountdown();
+</script>
+
 </body>
 </html>
