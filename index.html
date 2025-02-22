@@ -39,6 +39,22 @@
         margin-top: 10px;
     }
 
+    /* Tombol Play/Pause */
+    .music-controls {
+        margin-top: 20px;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #ffcc00;
+        color: black;
+        margin: 5px;
+    }
+
     /* Efek Kembang Api */
     .firework {
         position: absolute;
@@ -50,14 +66,8 @@
     }
 
     @keyframes explode {
-        0% {
-            transform: scale(1);
-            opacity: 1;
-        }
-        100% {
-            transform: scale(10);
-            opacity: 0;
-        }
+        0% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(10); opacity: 0; }
     }
 </style>
 
@@ -66,7 +76,15 @@
     <div class="container">
         <h1>Karin Birthday 24 ✨🎉</h1>
         <div id="countdown"></div>
-    </div><script>
+        <div class="music-controls">
+            <button class="btn" onclick="toggleMusic()">Play/Pause Music</button>
+        </div>
+    </div><audio id="bg-music" autoplay loop>
+    <source src="https://files.catbox.moe/jvz9un.m4a" type="audio/mp4">
+    Browser Anda tidak mendukung audio tag.
+</audio>
+
+<script>
     function updateCountdown() {
         const countdownElement = document.getElementById("countdown");
         const targetDate = new Date("2025-02-25T00:00:00+07:00").getTime();
@@ -85,7 +103,6 @@
         const seconds = Math.floor((timeRemaining / 1000) % 60);
 
         countdownElement.innerHTML = `${days} Hari : ${hours} Jam : ${minutes} Menit : ${seconds} Detik`;
-
         setTimeout(updateCountdown, 1000);
     }
 
@@ -97,9 +114,17 @@
                 firework.style.left = Math.random() * window.innerWidth + "px";
                 firework.style.top = Math.random() * window.innerHeight + "px";
                 document.body.appendChild(firework);
-
                 setTimeout(() => firework.remove(), 1000);
             }, i * 200);
+        }
+    }
+
+    function toggleMusic() {
+        var music = document.getElementById("bg-music");
+        if (music.paused) {
+            music.play();
+        } else {
+            music.pause();
         }
     }
 
